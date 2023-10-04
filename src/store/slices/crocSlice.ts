@@ -15,8 +15,9 @@ const crocSlice = createSlice({
     addCroc(state, action: PayloadAction<CrocType>) {
       state.unshift(action.payload);
     },
-    removeCroc(state, action) {
-      //todo
+    removeCroc(state, action: PayloadAction<string>) {
+      const index = state.findIndex((croc) => croc.id === action.payload);
+      state.splice(index, 1);
     },
   },
 });

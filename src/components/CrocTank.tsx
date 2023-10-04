@@ -2,7 +2,7 @@ import { faker } from "@faker-js/faker";
 import cryptoRandomString from "crypto-random-string";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch, RootState, addCroc } from "../store";
+import { AppDispatch, RootState, addCroc, removeCroc } from "../store";
 import AquaItem from "./AquaItem";
 
 const CrocTank = () => {
@@ -25,6 +25,10 @@ const CrocTank = () => {
     setIsLoading(false);
   };
 
+  const handleRemoveCroc = (id: string) => {
+    dispatch(removeCroc(id));
+  };
+
   return (
     <section className="border p-4 space-y-2">
       <h2>Croc Tank</h2>
@@ -42,7 +46,7 @@ const CrocTank = () => {
           <AquaItem
             key={croc.id}
             aqua={croc}
-            // handleRemoveAqua={handleRemoveFish}
+            handleRemoveAqua={handleRemoveCroc}
           />
         ))}
       </div>
