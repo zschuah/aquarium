@@ -3,7 +3,7 @@ import cryptoRandomString from "crypto-random-string";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState, addFish, removeFish } from "../store";
-import FishItem from "./FishItem";
+import AquaItem from "./AquaItem";
 
 const FishTank = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -43,10 +43,10 @@ const FishTank = () => {
 
       <div>
         {fishList.map((fish) => (
-          <FishItem
+          <AquaItem
             key={fish.id}
-            fish={fish}
-            handleRemoveFish={handleRemoveFish}
+            aqua={fish}
+            handleRemoveAqua={handleRemoveFish}
           />
         ))}
       </div>

@@ -1,12 +1,15 @@
 import { twMerge } from "tailwind-merge";
+import { CrocType } from "../store/slices/crocSlice";
 import { FishType } from "../store/slices/fishSlice";
 
 type PropTypes = {
-  fish: FishType;
-  handleRemoveFish: (id: string) => void;
+  aqua: FishType | CrocType;
+  handleRemoveAqua: (id: string) => void;
 };
 
-const FishItem = ({ fish, handleRemoveFish }: PropTypes) => {
+const AquaItem = ({ aqua, handleRemoveAqua }: PropTypes) => {
+  const { id, name, image } = aqua;
+
   return (
     <div
       className={twMerge(
@@ -15,20 +18,16 @@ const FishItem = ({ fish, handleRemoveFish }: PropTypes) => {
       )}
     >
       <div className="flex-1">
-        <p className="font-mono">{fish.id}</p>
-        <p>{fish.name}</p>
+        <p className="font-mono">{id}</p>
+        <p>{name}</p>
       </div>
 
       <div className="w-20 h-20">
-        <img
-          className="w-full h-full object-cover"
-          src={fish.image}
-          alt={fish.name}
-        />
+        <img className="w-full h-full object-cover" src={image} alt={name} />
       </div>
 
       <button
-        onClick={() => handleRemoveFish(fish.id)}
+        onClick={() => handleRemoveAqua(id)}
         className="btn btn-secondary btn-square"
       >
         X
@@ -37,4 +36,4 @@ const FishItem = ({ fish, handleRemoveFish }: PropTypes) => {
   );
 };
 
-export default FishItem;
+export default AquaItem;
