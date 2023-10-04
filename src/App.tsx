@@ -3,6 +3,7 @@ import "./App.css";
 import CrocTank from "./components/CrocTank";
 import FishTank from "./components/FishTank";
 import { AppDispatch, resetAquarium } from "./store";
+import PokeCenter from "./components/PokeCenter";
 
 function App() {
   const dispatch = useDispatch<AppDispatch>();
@@ -21,6 +22,7 @@ function App() {
       </div>
 
       <div className="mt-8 space-y-4">
+        <PokeCenter />
         <FishTank />
         <CrocTank />
       </div>

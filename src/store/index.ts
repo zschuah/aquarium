@@ -6,15 +6,16 @@ import pokeSlice from "./slices/pokeSlice";
 
 export const store = configureStore({
   reducer: {
+    poke: pokeSlice.reducer,
     fish: fishSlice.reducer,
     croc: crocSlice.reducer,
-    poke: pokeSlice.reducer,
   },
 });
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
 
+export * from "./thunks/fetchPoke";
 export const { addFish, removeFish } = fishSlice.actions;
 export const { addCroc, removeCroc } = crocSlice.actions;
 export { resetAquarium };
