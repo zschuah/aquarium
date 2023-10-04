@@ -26,7 +26,7 @@ const FishTank = () => {
   };
 
   return (
-    <section className="border p-4">
+    <section className="border p-4 space-y-2">
       <h2>Fish Tank</h2>
       <button
         onClick={handleAddFish}
@@ -37,9 +37,11 @@ const FishTank = () => {
         Add fish to tank
       </button>
 
-      {fishList.map((fish) => (
-        <FishItem key={fish.id} fish={fish} />
-      ))}
+      <div>
+        {fishList.map((fish) => (
+          <FishItem key={fish.id} fish={fish} />
+        ))}
+      </div>
     </section>
   );
 };

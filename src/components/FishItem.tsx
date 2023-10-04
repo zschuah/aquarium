@@ -26,7 +26,7 @@ const FishItem = ({ fish }: PropTypes) => {
         />
       </div>
 
-      <button className="btn btn-secondary btn-square">x</button>
+      <button className="btn btn-secondary btn-square">X</button>
     </div>
   );
 };
