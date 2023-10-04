@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
+import { resetAquarium } from "./actions";
 import crocSlice from "./slices/crocSlice";
 import fishSlice from "./slices/fishSlice";
-import { resetAquarium } from "./actions";
 
 export const store = configureStore({
   reducer: {
