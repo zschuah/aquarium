@@ -2,11 +2,13 @@ import { configureStore } from "@reduxjs/toolkit";
 import { resetAquarium } from "./actions";
 import crocSlice from "./slices/crocSlice";
 import fishSlice from "./slices/fishSlice";
+import pokeSlice from "./slices/pokeSlice";
 
 export const store = configureStore({
   reducer: {
     fish: fishSlice.reducer,
     croc: crocSlice.reducer,
+    poke: pokeSlice.reducer,
   },
 });
 
