@@ -3,6 +3,7 @@ import cryptoRandomString from "crypto-random-string";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState, addFish, removeFish } from "../store";
+import { URL_UNSPLASH_RANDOM } from "../utils/constants";
 import AquaItem from "./AquaItem";
 
 const FishTank = () => {
@@ -13,7 +14,7 @@ const FishTank = () => {
 
   const handleAddFish = async () => {
     setIsLoading(true);
-    const res = await fetch("https://source.unsplash.com/random/?fish");
+    const res = await fetch(URL_UNSPLASH_RANDOM + "fish");
     const newFish = {
       id: cryptoRandomString({ length: 6, type: "distinguishable" }),
       name: faker.animal.fish(),

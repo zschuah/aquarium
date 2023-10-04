@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState: {
   isLoading: boolean;
   data: any[];
-  error: any;
+  error: { message: string } | null;
 } = {
   isLoading: false,
   data: [],

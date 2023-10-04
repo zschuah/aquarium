@@ -3,6 +3,7 @@ import cryptoRandomString from "crypto-random-string";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState, addCroc, removeCroc } from "../store";
+import { URL_UNSPLASH_RANDOM } from "../utils/constants";
 import AquaItem from "./AquaItem";
 
 const CrocTank = () => {
@@ -13,7 +14,7 @@ const CrocTank = () => {
 
   const handleAddCroc = async () => {
     setIsLoading(true);
-    const res = await fetch("https://source.unsplash.com/random/?crocodile");
+    const res = await fetch(URL_UNSPLASH_RANDOM + "crocodile");
     const newCroc = {
       id: cryptoRandomString({ length: 6, type: "distinguishable" }),
       name: faker.animal.crocodilia(),
