@@ -1,13 +1,15 @@
-import { useDispatch } from "react-redux";
-import { addCroc } from "../store";
 import { faker } from "@faker-js/faker";
 import cryptoRandomString from "crypto-random-string";
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState, addCroc } from "../store";
+import AquaItem from "./AquaItem";
 
 const CrocTank = () => {
   const [isLoading, setIsLoading] = useState(false);
 
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
+  const crocList = useSelector((state: RootState) => state.croc);
 
   const handleAddCroc = async () => {
     setIsLoading(true);
@@ -24,7 +26,7 @@ const CrocTank = () => {
   };
 
   return (
-    <section className="border p-4">
+    <section className="border p-4 space-y-2">
       <h2>Croc Tank</h2>
       <button
         onClick={handleAddCroc}
@@ -34,6 +36,16 @@ const CrocTank = () => {
         {isLoading && <span className="loading"></span>}
         Add croc to tank
       </button>
+
+      <div>
+        {crocList.map((croc) => (
+          <AquaItem
+            key={croc.id}
+            aqua={croc}
+            // handleRemoveAqua={handleRemoveFish}
+          />
+        ))}
+      </div>
     </section>
   );
 };
