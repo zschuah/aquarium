@@ -20,6 +20,11 @@ const fishSlice = createSlice({
       state.splice(index, 1);
     },
   },
+  extraReducers(builder) {
+    builder.addCase("aqua/reset", () => {
+      return [];
+    });
+  },
 });
 
 export default fishSlice;

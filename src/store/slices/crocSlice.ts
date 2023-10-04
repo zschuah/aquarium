@@ -20,6 +20,11 @@ const crocSlice = createSlice({
       state.splice(index, 1);
     },
   },
+  extraReducers(builder) {
+    builder.addCase("aqua/reset", () => {
+      return [];
+    });
+  },
 });
 
 export default crocSlice;

@@ -16,7 +16,7 @@ const CrocTank = () => {
     const res = await fetch("https://source.unsplash.com/random/?crocodile");
     const newCroc = {
       id: cryptoRandomString({ length: 6, type: "distinguishable" }),
-      name: faker.animal.fish(),
+      name: faker.animal.crocodilia(),
       image: res.url,
     };
 
