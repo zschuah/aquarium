@@ -2,7 +2,7 @@ import { faker } from "@faker-js/faker";
 import cryptoRandomString from "crypto-random-string";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch, RootState, addFish } from "../store";
+import { AppDispatch, RootState, addFish, removeFish } from "../store";
 import FishItem from "./FishItem";
 
 const FishTank = () => {
@@ -25,6 +25,10 @@ const FishTank = () => {
     setIsLoading(false);
   };
 
+  const handleRemoveFish = (id: string) => {
+    dispatch(removeFish(id));
+  };
+
   return (
     <section className="border p-4 space-y-2">
       <h2>Fish Tank</h2>
@@ -39,7 +43,11 @@ const FishTank = () => {
 
       <div>
         {fishList.map((fish) => (
-          <FishItem key={fish.id} fish={fish} />
+          <FishItem
+            key={fish.id}
+            fish={fish}
+            handleRemoveFish={handleRemoveFish}
+          />
         ))}
       </div>
     </section>

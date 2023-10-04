@@ -15,8 +15,9 @@ const fishSlice = createSlice({
     addFish(state, action: PayloadAction<FishType>) {
       state.unshift(action.payload);
     },
-    removeFish(state, action) {
-      //todo
+    removeFish(state, action: PayloadAction<string>) {
+      const index = state.findIndex((fish) => fish.id === action.payload);
+      state.splice(index, 1);
     },
   },
 });
