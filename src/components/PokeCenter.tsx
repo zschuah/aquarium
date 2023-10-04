@@ -1,11 +1,19 @@
-import { useDispatch } from "react-redux";
-import { AppDispatch, addPoke } from "../store";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState, addPoke } from "../store";
+import AquaItem from "./AquaItem";
+import { faker } from "@faker-js/faker";
 
 const PokeCenter = () => {
   const dispatch = useDispatch<AppDispatch>();
+  const {
+    isLoading,
+    data: pokeList,
+    error,
+  } = useSelector((state: RootState) => state.poke);
 
   const handleAddPokemon = () => {
-    dispatch(addPoke());
+    const pokeId = faker.number.int({ min: 1, max: 151 });
+    dispatch(addPoke(pokeId));
   };
 
   return (
@@ -14,21 +22,23 @@ const PokeCenter = () => {
       <button
         onClick={handleAddPokemon}
         className="btn btn-primary"
-        // disabled={isLoading}
+        disabled={isLoading}
       >
-        {/* {isLoading && <span className="loading"></span>} */}
+        {isLoading && <span className="loading"></span>}
         Add pokemon to center
       </button>
 
-      {/* <div>
-        {fishList.map((fish) => (
+      {error && <p>{error.message}</p>}
+
+      <div>
+        {pokeList.map((poke) => (
           <AquaItem
-            key={fish.id}
-            aqua={fish}
-            handleRemoveAqua={handleRemoveFish}
+            key={poke.id}
+            aqua={poke}
+            // handleRemoveAqua={handleRemoveFish}
           />
         ))}
-      </div> */}
+      </div>
     </section>
   );
 };

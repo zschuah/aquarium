@@ -1,8 +1,10 @@
 import { PayloadAction, SerializedError, createSlice } from "@reduxjs/toolkit";
+import { resetAquarium } from "../actions";
 import { addPoke } from "../thunks/addPoke";
 
-type PokeType = {
+export type PokeType = {
   id: string;
+  pokeId: number;
   name: string;
   image: string;
 };
@@ -35,6 +37,10 @@ const pokeSlice = createSlice({
     builder.addCase(addPoke.rejected, (state, action) => {
       state.isLoading = false;
       state.error = action.error;
+    });
+
+    builder.addCase(resetAquarium, (state) => {
+      state.data = [];
     });
   },
 });
