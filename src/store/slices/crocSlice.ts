@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { resetAquarium } from "../actions";
 
 export type CrocType = {
   id: string;
@@ -21,7 +22,7 @@ const crocSlice = createSlice({
     },
   },
   extraReducers(builder) {
-    builder.addCase("aqua/reset", () => {
+    builder.addCase(resetAquarium, () => {
       return [];
     });
   },

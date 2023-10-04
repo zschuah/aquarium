@@ -2,13 +2,13 @@ import { useDispatch } from "react-redux";
 import "./App.css";
 import CrocTank from "./components/CrocTank";
 import FishTank from "./components/FishTank";
-import { AppDispatch } from "./store";
+import { AppDispatch, resetAquarium } from "./store";
 
 function App() {
   const dispatch = useDispatch<AppDispatch>();
 
   const handleReset = () => {
-    dispatch({ type: "aqua/reset" });
+    dispatch(resetAquarium());
   };
 
   return (
