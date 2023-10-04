@@ -1,9 +1,15 @@
-import { SerializedError, createSlice } from "@reduxjs/toolkit";
-import { fetchPoke } from "../thunks/fetchPoke";
+import { PayloadAction, SerializedError, createSlice } from "@reduxjs/toolkit";
+import { addPoke } from "../thunks/addPoke";
+
+type PokeType = {
+  id: string;
+  name: string;
+  image: string;
+};
 
 const initialState: {
   isLoading: boolean;
-  data: any[];
+  data: PokeType[];
   error: SerializedError | null;
 } = {
   isLoading: false,
@@ -16,14 +22,17 @@ const pokeSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers(builder) {
-    builder.addCase(fetchPoke.pending, (state, action) => {
+    builder.addCase(addPoke.pending, (state, action) => {
       state.isLoading = true;
     });
-    builder.addCase(fetchPoke.fulfilled, (state, action) => {
-      state.isLoading = false;
-      state.data.unshift(action.payload);
-    });
-    builder.addCase(fetchPoke.rejected, (state, action) => {
+    builder.addCase(
+      addPoke.fulfilled,
+      (state, action: PayloadAction<PokeType>) => {
+        state.isLoading = false;
+        state.data.unshift(action.payload);
+      }
+    );
+    builder.addCase(addPoke.rejected, (state, action) => {
       state.isLoading = false;
       state.error = action.error;
     });

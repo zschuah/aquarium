@@ -1,18 +1,18 @@
 import { useDispatch } from "react-redux";
-import { fetchPoke } from "../store";
+import { AppDispatch, addPoke } from "../store";
 
 const PokeCenter = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
 
   const handleAddPokemon = () => {
-    // dispatch()
+    dispatch(addPoke());
   };
 
   return (
     <section className="border p-4 space-y-2">
       <h2>Pokemon Center</h2>
       <button
-        // onClick={handleAddFish}
+        onClick={handleAddPokemon}
         className="btn btn-primary"
         // disabled={isLoading}
       >
