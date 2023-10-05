@@ -22,9 +22,14 @@ const initialState: {
 const pokeSlice = createSlice({
   name: "poke",
   initialState,
-  reducers: {},
+  reducers: {
+    removePoke(state, action: PayloadAction<string>) {
+      const index = state.data.findIndex((poke) => poke.id === action.payload);
+      state.data.splice(index, 1);
+    },
+  },
   extraReducers(builder) {
-    builder.addCase(addPoke.pending, (state, action) => {
+    builder.addCase(addPoke.pending, (state) => {
       state.isLoading = true;
     });
     builder.addCase(

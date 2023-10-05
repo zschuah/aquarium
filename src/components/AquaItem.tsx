@@ -6,9 +6,10 @@ import { PokeType } from "../store/slices/pokeSlice";
 type PropTypes = {
   aqua: FishType | CrocType | PokeType;
   handleRemoveAqua: (id: string) => void;
+  isPoke?: boolean;
 };
 
-const AquaItem = ({ aqua, handleRemoveAqua }: PropTypes) => {
+const AquaItem = ({ aqua, handleRemoveAqua, isPoke }: PropTypes) => {
   const { id, name, image } = aqua;
 
   return (
@@ -24,7 +25,14 @@ const AquaItem = ({ aqua, handleRemoveAqua }: PropTypes) => {
       </div>
 
       <div className="w-20 h-20">
-        <img className="w-full h-full object-cover" src={image} alt={name} />
+        <img
+          className={twMerge(
+            "w-full h-full object-cover",
+            isPoke && "object-contain"
+          )}
+          src={image}
+          alt={name}
+        />
       </div>
 
       <button

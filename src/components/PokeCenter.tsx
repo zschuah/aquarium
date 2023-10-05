@@ -1,7 +1,7 @@
-import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch, RootState, addPoke } from "../store";
-import AquaItem from "./AquaItem";
 import { faker } from "@faker-js/faker";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState, addPoke, removePoke } from "../store";
+import AquaItem from "./AquaItem";
 
 const PokeCenter = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -14,6 +14,10 @@ const PokeCenter = () => {
   const handleAddPokemon = () => {
     const pokeId = faker.number.int({ min: 1, max: 151 });
     dispatch(addPoke(pokeId));
+  };
+
+  const handleRemovePokemon = (id: string) => {
+    dispatch(removePoke(id));
   };
 
   return (
@@ -35,7 +39,8 @@ const PokeCenter = () => {
           <AquaItem
             key={poke.id}
             aqua={poke}
-            // handleRemoveAqua={handleRemoveFish}
+            handleRemoveAqua={handleRemovePokemon}
+            isPoke
           />
         ))}
       </div>
