@@ -1,9 +1,9 @@
 import { useDispatch } from "react-redux";
+import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import CrocTank from "./components/CrocTank";
-import FishTank from "./components/FishTank";
+import CenterTank from "./pages/CenterTank";
+import DailyRandom from "./pages/DailyRandom";
 import { AppDispatch, resetAquarium } from "./store";
-import PokeCenter from "./components/PokeCenter";
 
 function App() {
   const dispatch = useDispatch<AppDispatch>();
@@ -21,11 +21,10 @@ function App() {
         </button>
       </div>
 
-      <div className="mt-8 space-y-4">
-        <PokeCenter />
-        <FishTank />
-        <CrocTank />
-      </div>
+      <Routes>
+        <Route path="/" element={<CenterTank />} />
+        <Route path="/daily" element={<DailyRandom />} />
+      </Routes>
     </div>
   );
 }
