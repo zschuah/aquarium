@@ -7,7 +7,7 @@ type PropTypes = {
 
 const NavbarLink = ({ children, to }: PropTypes) => {
   return (
-    <Link className="px-4 py-2 hover:bg-zinc-700" to={to}>
+    <Link className="px-4 py-2 hover:bg-zinc-700 active:bg-zinc-600" to={to}>
       {children}
     </Link>
   );
