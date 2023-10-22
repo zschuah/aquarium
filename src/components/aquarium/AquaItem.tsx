@@ -11,6 +11,7 @@ type PropTypes = {
 
 const AquaItem = ({ aqua, handleRemoveAqua, isPoke }: PropTypes) => {
   const { id, name, image } = aqua;
+  const pokeId = "pokeId" in aqua && aqua.pokeId;
 
   return (
     <div
@@ -20,7 +21,9 @@ const AquaItem = ({ aqua, handleRemoveAqua, isPoke }: PropTypes) => {
       )}
     >
       <div className="flex-1">
-        <p className="font-mono">{id}</p>
+        <p className="font-mono">
+          {id} {`[${pokeId}]`}
+        </p>
         <p className="capitalize">{name}</p>
       </div>
 
