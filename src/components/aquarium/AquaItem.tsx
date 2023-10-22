@@ -22,7 +22,7 @@ const AquaItem = ({ aqua, handleRemoveAqua, isPoke }: PropTypes) => {
     >
       <div className="flex-1">
         <p className="font-mono">
-          {id} {`[${pokeId}]`}
+          {id} {isPoke && `[${pokeId}]`}
         </p>
         <p className="capitalize">{name}</p>
       </div>
