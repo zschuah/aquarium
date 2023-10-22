@@ -1,6 +1,6 @@
 import { faker } from "@faker-js/faker";
 import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch, RootState, addPoke, removePoke } from "../store";
+import { AppDispatch, RootState, addPoke, removePoke } from "../../store";
 import AquaItem from "./AquaItem";
 
 const PokeCenter = () => {

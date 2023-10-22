@@ -38,8 +38,11 @@ const DailyRandom = () => {
 
   if (dailyPoke) {
     return (
-      <div className="mt-8">
-        <h2>Daily Random Pokemon</h2>
+      <div>
+        <div className="flex items-center gap-4 mb-8">
+          <h1>Daily Random</h1>
+          <button className="btn btn-secondary">Next random</button>
+        </div>
 
         <div>
           <p>{dailyPoke.name}</p>

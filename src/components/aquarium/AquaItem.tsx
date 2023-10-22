@@ -1,7 +1,7 @@
 import { twMerge } from "tailwind-merge";
-import { CrocType } from "../store/slices/crocSlice";
-import { FishType } from "../store/slices/fishSlice";
-import { PokeType } from "../store/slices/pokeSlice";
+import { CrocType } from "../../store/slices/crocSlice";
+import { FishType } from "../../store/slices/fishSlice";
+import { PokeType } from "../../store/slices/pokeSlice";
 
 type PropTypes = {
   aqua: FishType | CrocType | PokeType;

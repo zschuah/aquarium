@@ -2,52 +2,52 @@ import { faker } from "@faker-js/faker";
 import cryptoRandomString from "crypto-random-string";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch, RootState, addCroc, removeCroc } from "../store";
-import { URL_UNSPLASH_RANDOM } from "../utils/constants";
+import { AppDispatch, RootState, addFish, removeFish } from "../../store";
+import { URL_UNSPLASH_RANDOM } from "../../utils/constants";
 import AquaItem from "./AquaItem";
 
-const CrocTank = () => {
+const FishTank = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   const dispatch = useDispatch<AppDispatch>();
-  const crocList = useSelector((state: RootState) => state.croc);
+  const fishList = useSelector((state: RootState) => state.fish);
 
-  const handleAddCroc = async () => {
+  const handleAddFish = async () => {
     setIsLoading(true);
-    const res = await fetch(URL_UNSPLASH_RANDOM + "crocodile");
-    const newCroc = {
+    const res = await fetch(URL_UNSPLASH_RANDOM + "fish");
+    const newFish = {
       id: cryptoRandomString({ length: 6, type: "distinguishable" }),
-      name: faker.animal.crocodilia(),
+      name: faker.animal.fish(),
       image: res.url,
     };
 
     // await new Promise((resolve) => setTimeout(resolve, 2000));
-    dispatch(addCroc(newCroc));
+    dispatch(addFish(newFish));
     setIsLoading(false);
   };
 
-  const handleRemoveCroc = (id: string) => {
-    dispatch(removeCroc(id));
+  const handleRemoveFish = (id: string) => {
+    dispatch(removeFish(id));
   };
 
   return (
     <section className="border p-4 space-y-2">
-      <h2>Croc Tank</h2>
+      <h2>Fish Tank</h2>
       <button
-        onClick={handleAddCroc}
+        onClick={handleAddFish}
         className="btn btn-primary"
         disabled={isLoading}
       >
         {isLoading && <span className="loading"></span>}
-        Add croc to tank
+        Add fish to tank
       </button>
 
       <div>
-        {crocList.map((croc) => (
+        {fishList.map((fish) => (
           <AquaItem
-            key={croc.id}
-            aqua={croc}
-            handleRemoveAqua={handleRemoveCroc}
+            key={fish.id}
+            aqua={fish}
+            handleRemoveAqua={handleRemoveFish}
           />
         ))}
       </div>
@@ -55,4 +55,4 @@ const CrocTank = () => {
   );
 };
 
-export default CrocTank;
+export default FishTank;

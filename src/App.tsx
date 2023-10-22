@@ -1,32 +1,17 @@
-import { useDispatch } from "react-redux";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import Navbar from "./components/Navbar";
-import CenterTank from "./pages/CenterTank";
+import Aquarium from "./pages/Aquarium";
 import DailyRandom from "./pages/DailyRandom";
-import { AppDispatch, resetAquarium } from "./store";
 
 function App() {
-  const dispatch = useDispatch<AppDispatch>();
-
-  const handleReset = () => {
-    dispatch(resetAquarium());
-  };
-
   return (
     <div className="App">
       <Navbar />
 
       <div className="p-4">
-        <div className="flex items-center gap-4">
-          <h1>Aquarium</h1>
-          <button onClick={handleReset} className="btn btn-secondary">
-            Reset aquarium
-          </button>
-        </div>
-
         <Routes>
-          <Route path="/" element={<CenterTank />} />
+          <Route path="/" element={<Aquarium />} />
           <Route path="/daily" element={<DailyRandom />} />
         </Routes>
       </div>
