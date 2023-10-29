@@ -1,19 +1,30 @@
-import { Route, Routes } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import "./App.css";
-import Navbar from "./components/Navbar";
-import Aquarium from "./pages/Aquarium";
-import DailyRandom from "./pages/DailyRandom";
+import CrocTank from "./components/CrocTank";
+import FishTank from "./components/FishTank";
+import PokeCenter from "./components/PokeCenter";
+import { AppDispatch, resetAquarium } from "./store";
 
 function App() {
+  const dispatch = useDispatch<AppDispatch>();
+
+  const handleReset = () => {
+    dispatch(resetAquarium());
+  };
+
   return (
     <div className="App">
-      <Navbar />
+      <div className="flex items-center gap-4 mb-8">
+        <h1>Aquarium</h1>
+        <button onClick={handleReset} className="btn btn-secondary">
+          Reset aquarium
+        </button>
+      </div>
 
-      <div className="p-4">
-        <Routes>
-          <Route path="/" element={<Aquarium />} />
-          <Route path="/daily" element={<DailyRandom />} />
-        </Routes>
+      <div className="space-y-4">
+        <FishTank />
+        <CrocTank />
+        <PokeCenter />
       </div>
     </div>
   );

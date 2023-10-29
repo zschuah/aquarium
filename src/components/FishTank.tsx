@@ -2,8 +2,9 @@ import { faker } from "@faker-js/faker";
 import cryptoRandomString from "crypto-random-string";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch, RootState, addFish, removeFish } from "../../store";
-import { URL_UNSPLASH_RANDOM } from "../../utils/constants";
+import AquaCard from "../layout/AquaCard";
+import { AppDispatch, RootState, addFish, removeFish } from "../store";
+import { URL_UNSPLASH_RANDOM } from "../utils/constants";
 import AquaItem from "./AquaItem";
 
 const FishTank = () => {
@@ -31,7 +32,7 @@ const FishTank = () => {
   };
 
   return (
-    <section className="border p-4 space-y-2">
+    <AquaCard>
       <h2>Fish Tank</h2>
       <button
         onClick={handleAddFish}
@@ -51,7 +52,7 @@ const FishTank = () => {
           />
         ))}
       </div>
-    </section>
+    </AquaCard>
   );
 };
 

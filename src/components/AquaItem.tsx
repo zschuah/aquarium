@@ -1,7 +1,7 @@
 import { twMerge } from "tailwind-merge";
-import { CrocType } from "../../store/slices/crocSlice";
-import { FishType } from "../../store/slices/fishSlice";
-import { PokeType } from "../../store/slices/pokeSlice";
+import { CrocType } from "../store/slices/crocSlice";
+import { FishType } from "../store/slices/fishSlice";
+import { PokeType } from "../store/slices/pokeSlice";
 
 type PropTypes = {
   aqua: FishType | CrocType | PokeType;
@@ -11,6 +11,12 @@ type PropTypes = {
 
 const AquaItem = ({ aqua, handleRemoveAqua, isPoke }: PropTypes) => {
   const { id, name, image } = aqua;
+  /**
+   * TS ERROR: Property 'pokeId' does not exist
+   * on type 'FishType | CrocType | PokeType'.
+   *
+   * To avoid this error, use the 'in' keyword to check if the property exists.
+   */
   const pokeId = "pokeId" in aqua && aqua.pokeId;
 
   return (

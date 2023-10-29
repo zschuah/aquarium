@@ -1,6 +1,7 @@
 import { faker } from "@faker-js/faker";
 import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch, RootState, addPoke, removePoke } from "../../store";
+import AquaCard from "../layout/AquaCard";
+import { AppDispatch, RootState, addPoke, removePoke } from "../store";
 import AquaItem from "./AquaItem";
 
 const PokeCenter = () => {
@@ -21,7 +22,7 @@ const PokeCenter = () => {
   };
 
   return (
-    <section className="border p-4 space-y-2">
+    <AquaCard>
       <h2>Pokemon Center</h2>
       <button
         onClick={handleAddPokemon}
@@ -44,7 +45,7 @@ const PokeCenter = () => {
           />
         ))}
       </div>
-    </section>
+    </AquaCard>
   );
 };
 
